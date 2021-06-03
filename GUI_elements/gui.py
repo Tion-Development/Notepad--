@@ -3,6 +3,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.config import Config
 from kivy.uix.image import Image
 import os
+import time 
+import threading
 
 def startgui():
     class Notepad(App):
@@ -17,8 +19,24 @@ def startgui():
             main.add_widget(Image(
                 size = (1280, 720),
                 pos = (0, 0),
-                source = '  '
+                source = os.getcwd()+'\\img\\bg.jpg'
             ))
+
+            return(main)
+
+        def make_white(self):
+            time.sleep(5.0)
+            self.root.remove_widget(self.root.children[0])
+            self.root.add_widget(Image(
+                size = (1280, 720),
+                pos = (0, 0),
+                source = ''
+            ))
+
+        def on_start(self):
+            th = threading.Thread(target= self.make_white)
+            th.start()
+
 
     Notepad().run()
 
