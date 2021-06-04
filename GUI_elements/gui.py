@@ -2,6 +2,10 @@ from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
 from kivy.config import Config
 from kivy.uix.image import Image
+from kivy.uix.textinput import TextInput
+from kivy.uix.dropdown import DropDown
+from kivy.uix.button import Button
+
 import os
 import time 
 import threading
@@ -24,17 +28,31 @@ def startgui():
 
             return(main)
 
-        def make_white(self):
-            time.sleep(5.0)
+        def make_work_filed(self):
+            time.sleep(3.0)
             self.root.remove_widget(self.root.children[0])
-            self.root.add_widget(Image(
-                size = (1280, 720),
-                pos = (0, 0),
-                source = ''
+            
+            wf = FloatLayout(size = (1280, 720))
+
+            wf.add_widget(Image(
+                pos = (0,0),
+                size = (1280, 720)
             ))
 
+            wf.add_widget(TextInput(
+                multiline = True,
+                size_hint = (1, .95),
+                pos = (0,0),
+                background_color = (256, 256, 256, 0),
+                text = 'Сюда Вы можете писать свой текст'
+            ))
+
+
+            self.root.add_widget(wf)
+
+            
         def on_start(self):
-            th = threading.Thread(target= self.make_white)
+            th = threading.Thread(target= self.make_work_filed)
             th.start()
 
 
