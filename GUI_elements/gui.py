@@ -10,7 +10,7 @@ import os
 import time 
 import threading
 
-def startgui():
+def startgui(textInp):
     class Notepad(App):
         def build(self):
             
@@ -44,25 +44,25 @@ def startgui():
                 size_hint = (1, .95),
                 pos = (0,0),
                 background_color = (256, 256, 256, 0),
-                text = 'L1mpex нихрена не делает'
+                text = ''
             ))
 
             wf.add_widget(Button(
-                text = 'open',
+                text = 'Open',
                 on_press = self.open,
                 size_hint = (0.1, .04),
                 pos = (0, 680)
             ))
 
             wf.add_widget(Button(
-                text = 'save',
+                text = 'Save',
                 on_press = self.save,
                 size_hint = (0.1, .04),
                 pos = (150, 680)
             ))
 
             wf.add_widget(Button(
-                text = 'new',
+                text = 'New',
                 on_press = self.new,
                 size_hint = (0.1, .04),
                 pos = (300, 680)
@@ -72,17 +72,22 @@ def startgui():
 
             
         def open(self, instance):
-            self.root.children[0].children[3].text = ''
-            #После равно нужнен результат ф-ции (там где '')
+            # Меню выбора файла
 
-        def save(self, instance):
+
+            self.root.children[0].children[3].text = textInp
+            # Нужно замещать текст, только если пользователь выбрал другой файл. Т.е. мне нужно возвращать пусть к выбранному файлу.
+
+            # После равно нужнен результат ф-ции (там где '')
+
+        def save(self, instance, textInp):
             text = self.root.children[0].children[3].text
-            print(text)
-            #В переменной text лежит твой текст
+            return text
+            # В переменной text лежит твой текст
             
         def new(self, instance):
             self.root.children[0].children[3].text = ''
-            #Cюда новый
+            # Cюда новый
 
         def on_start(self):
             th = threading.Thread(target= self.make_work_filed)
@@ -90,10 +95,3 @@ def startgui():
 
 
     Notepad().run()
-
-def returnText():
-    text = "TEXT"
-    return text
-
-if __name__ == '__main__':
-    startgui()
