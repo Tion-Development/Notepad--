@@ -1,6 +1,6 @@
 import os
 
-def textInp(temp):
+def fileText(temp):
     sourse = temp
     fp = open(temp, encoding="UTF-8")
     l = fp.readline()
