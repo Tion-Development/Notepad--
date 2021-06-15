@@ -10,6 +10,9 @@ import os
 import time 
 import threading
 
+from tkinter import Tk 
+from tkinter.filedialog import askopenfilename
+
 def startgui(textInp):
     class Notepad(App):
         def build(self):
@@ -73,14 +76,16 @@ def startgui(textInp):
             
         def open(self, instance):
             # Меню выбора файла
-
+            Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+            filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+            return(filename)
 
             self.root.children[0].children[3].text = textInp
             # Нужно замещать текст, только если пользователь выбрал другой файл. Т.е. мне нужно возвращать пусть к выбранному файлу.
 
             # После равно нужнен результат ф-ции (там где '')
 
-        def save(self, instance, textInp):
+        def save(self, instance,):
             text = self.root.children[0].children[3].text
             return text
             # В переменной text лежит твой текст
