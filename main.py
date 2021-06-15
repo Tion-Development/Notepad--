@@ -6,4 +6,4 @@ from File_Reg.saveTemp import *
 import os
 
 if __name__ == "__main__":
-    startgui(textInp)
+    startgui(fileText)
