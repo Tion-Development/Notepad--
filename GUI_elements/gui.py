@@ -44,12 +44,34 @@ def startgui():
                 size_hint = (1, .95),
                 pos = (0,0),
                 background_color = (256, 256, 256, 0),
-                text = 'Сюда Вы можете писать свой текст'
+                text = 'L1mpex нихрена не делает'
             ))
 
+            wf.add_widget(Button(
+                text = 'open',
+                on_press = self.open,
+                size_hint = (0.1, .04),
+                pos = (0, 680)
+            ))
+
+            wf.add_widget(Button(
+                text = 'save',
+                on_press = self.save,
+                size_hint = (0.1, .04),
+                pos = (150, 680)
+            ))
 
             self.root.add_widget(wf)
 
+            
+        def open(self, instance):
+            self.root.children[0].children[2].text = ''
+            #После равно нужнен результат ф-ции (там где '')
+
+        def save(self, instance):
+            text = self.root.children[0].children[2].text
+            print(text)
+            #В переменной text лежит твой текст
             
         def on_start(self):
             th = threading.Thread(target= self.make_work_filed)
