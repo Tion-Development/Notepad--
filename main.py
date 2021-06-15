@@ -1,4 +1,3 @@
-from config import *
 from GUI_elements.gui import *
 from File_Reg.coutWords import *
 from File_Reg.textInp import *
