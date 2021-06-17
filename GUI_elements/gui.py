@@ -76,8 +76,8 @@ def startgui(textInp):
             
         def open(self, instance):
             # Меню выбора файла
-            Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-            filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+            Tk().withdraw()
+            filename = askopenfilename()
             return(filename)
 
             self.root.children[0].children[3].text = textInp
